@@ -18,28 +18,24 @@ public class RouteLocatorConfig {
                         .filters(f -> f.stripPrefix(0))
                         .uri("lb://AUTH-SERVICE"))
 
-                .route("account-service", r -> r.path("/api/accounts/**")
-                        .filters(f -> f.stripPrefix(1))
-                        .uri("lb://ACCOUNT-SERVICE"))
+                .route("customer-service", r -> r.path("/api/customers/**")
+                        .filters(f -> f.stripPrefix(0))
+                        .uri("lb://CUSTOMER-SERVICE"))
 
                 .route("payment-service", r -> r.path("/api/payments/**")
-                        .filters(f -> f.stripPrefix(1))
+                        .filters(f -> f.stripPrefix(0))
                         .uri("lb://PAYMENT-SERVICE"))
 
                 // Accounts
                 .route("account-service", r -> r.path("/api/accounts/**")
-                        .filters(f -> f.stripPrefix(2))
+                        .filters(f -> f.stripPrefix(0))
                         .uri("lb://ACCOUNT-SERVICE"))
 
                 // Payment
-                .route("payment-service", r -> r.path("/api/payments/**")
-                        .filters(f -> f.stripPrefix(2))
-                        .uri("lb://PAYMENT-SERVICE"))
+                .route("ledger-service", r -> r.path("/api/ledger/**")
+                        .filters(f -> f.stripPrefix(0))
+                        .uri("lb://LEDGER-SERVICE"))
 
-                // Customer
-                .route("customer-service", r -> r.path("/api/customers/**")
-                        .filters(f -> f.stripPrefix(2))
-                        .uri("lb://CUSTOMER-SERVICE"))
 
                 // Transaction service
                 .route("transaction-service", r -> r.path("/api/transactions/**")

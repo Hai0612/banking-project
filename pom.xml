@@ -22,6 +22,14 @@
 
     <dependencies>
 
+        <!-- ====================================================== -->
+        <!-- SPRING CLOUD -->
+        <!-- ====================================================== -->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -29,22 +37,19 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+        </dependency>
+
+        <!-- ====================================================== -->
+        <!-- SPRING BOOT -->
+        <!-- ====================================================== -->
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- ================= SECURITY ================= -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-
-        <!-- ================= REACTIVE ================= -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -55,47 +60,22 @@
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
         </dependency>
 
-        <!-- ================= RESILIENCE ================= -->
+        <!-- ====================================================== -->
+        <!-- SECURITY -->
+        <!-- ====================================================== -->
+
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- ================= OBSERVABILITY (CLEAN OTEL STACK) ================= -->
-
-        <!-- Micrometer Tracing bridge (IMPORTANT - replace raw OTEL SDK usage) -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
 
-        <!-- Micrometer Tracing — bridge sang OTel -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-otel</artifactId>
-        </dependency>
-
-        <!-- OTel SDK + OTLP exporter -->
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp</artifactId>
-        </dependency>
-
-        <!-- Auto-instrument WebFlux / Spring Cloud Gateway -->
-<!--        <dependency>-->
-<!--            <groupId>io.opentelemetry.instrumentation</groupId>-->
-<!--            <artifactId>opentelemetry-spring-boot-starter</artifactId>-->
-<!--            <version>2.4.0</version>-->
-<!--        </dependency>-->
-
-        <!-- Structured JSON log -->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>7.4</version>
-        </dependency>
-        <!-- ================= AUTH ================= -->
         <!-- JWT -->
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -116,12 +96,39 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- ================= COMMON ================= -->
+        <!-- ====================================================== -->
+        <!-- OBSERVABILITY -->
+        <!-- ====================================================== -->
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-otel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.4</version>
+        </dependency>
+
+        <!-- ====================================================== -->
+        <!-- INTERNAL MODULES -->
+        <!-- ====================================================== -->
+
         <dependency>
             <groupId>com.bank</groupId>
             <artifactId>core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
+
+        <!-- ====================================================== -->
+        <!-- DEVELOPMENT -->
+        <!-- ====================================================== -->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -129,9 +136,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- logging already included in Spring Boot -->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

@@ -7,8 +7,8 @@
           locator:
             enabled: true
         routes:
-          - id: account-service
-            uri: lb://ACCOUNT-SERVICE
+          - id: customer-service
+            uri: lb://CUSTOMER-SERVICE
             predicates:
               - Path=/api/accounts/**
           - id: auth-service
@@ -37,7 +37,8 @@
           jwt:
             jwk-set-uri: ${KEYCLOAK_JWK_SET_URI:http://localhost:8089/realms/baas/protocol/openid-connect/certs}
   jwt:
-    secret: "1fdssdf324324dfsdfsf"
+    secret: "bW9yZVNlY3VyZVNlY3JldEtleUhhc2g0MjM0NTY="
+    expiration: "1200"
   server:
     port: 8081
   eureka:
@@ -74,7 +75,10 @@
   logging:
     level:
       io.opentelemetry: WARN
-      org.springframework.cloud.gateway: INFO
+      org.springframework.cloud.gateway: DEBUG
+      org.springframework.cloud.gateway.filter: DEBUG
+      org.springframework.cloud.gateway.handler: DEBUG
+      org.springframework.cloud.gateway.route: DEBUG
   resilience4j:
     circuitbreaker:
       configs:
